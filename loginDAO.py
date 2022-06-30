@@ -1,9 +1,15 @@
 from asyncio.windows_events import NULL
+from optparse import Values
 #import psycopg2
 import time
 from config import config
 from os import system
 from menuDAO import menuDAO
+
+# compare input values with database Values
+# https://stackoverflow.com/questions/57636773/how-to-compare-input-value-with-mysql-database-value-in-python
+# https://stackoverflow.com/questions/69300218/how-can-i-compare-a-value-from-database-to-python-input
+
 
 class loginDAO():
 

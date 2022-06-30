@@ -4,82 +4,93 @@ import time
 from config import config
 from os import system
 from loginDAO import loginDAO
+from registerUserDAO import registerUserDAO
 #from start import startDAO
 
 class registerDAO():
 
     countries = ["CH", "DE", "FR", "AU", "SP", "NL", "IT", "ES", "SE", "BE", "LU", "DK", "NO", "FI", "PL", "PT", "CZ", "GB", "IE"]
 
+    name = ''
+    age = ''
+    password = ''
+    gender = ''
+    genderPreference = ''
+    nationality = ''
+
+
     def inputName(self):
         time.sleep(1)
         print('Enter your firstname (Or e to EXIT)')
-        name = input()
-        if name == "e":
+        self.name = input()
+        if self.name == "e":
             print("Going back to main-menu")
-            time.sleep(1)
+            time.sleep(0.5)
         else:
-            time.sleep(1)
+            time.sleep(0.5)
             self.inputAge(self)
 
     def inputAge(self):
         print('Enter your age (Or e to EXIT)')
-        age = input()
-        if age == "e":
+        self.age = input()
+        if self.age == "e":
             print("Going back to main-menu")
-            time.sleep(1)
+            time.sleep(0.5)
         else:
-            time.sleep(1)
+            time.sleep(0.5)
             self.inputPassword(self)
 
     def inputPassword(self):
         print('Enter your password (Or e to EXIT)')
-        password = input()
-        if password == "e":
+        self.password = input()
+        if self.password == "e":
             print("Going back to main-menu")
-            time.sleep(1)
+            time.sleep(0.5)
         else:
-            time.sleep(1)
+            time.sleep(0.5)
             self.inputGender(self)
 
     def inputGender(self):
         print('Enter your gender (M=male, F=female, E=else) (Or e to EXIT)')
-        gender = input()
-        if gender == "M" or gender == "F" or gender == "E":
-            time.sleep(1)
+        self.gender = input()
+        if self.gender == "M" or self.gender == "F" or self.gender == "E":
+            time.sleep(0.5)
             self.inputPreference(self)
-        elif gender == "e":
+        elif self.gender == "e":
             print("Going back to main-menu")
-            time.sleep(1)
+            time.sleep(0.5)
         else:
             print('invalid input')
-            time.sleep(1)
+            time.sleep(0.5)
+            self.inputGender(self)
 
     def inputPreference(self):
         print('Enter your gender preference (M=male, F=female, E=else) (Or e to EXIT)')
-        genderPreference = input()
-        if genderPreference == 'M' or genderPreference == 'F' or genderPreference == "E":
-            time.sleep(1)
+        self.genderPreference = input()
+        if self.genderPreference == 'M' or self.genderPreference == 'F' or self.genderPreference == "E":
+            time.sleep(0.5)
             self.inputNationality(self)
-        elif genderPreference == "e":
+        elif self.genderPreference == "e":
             print("Going back to main-menu")
-            time.sleep(1)
+            time.sleep(0.5)
         else:
             print('invalid input')
-            time.sleep(1)
+            time.sleep(0.5)
             self.inputPreference(self)
 
     def inputNationality(self):
         print('And as a last step, please enter your nationality (Country like CH, DE, AU, FR etc) (Or e to EXIT)')
-        nationality = input()
-        if nationality in self.countries:
+        self.nationality = input()
+        if self.nationality in self.countries:
             print('Perfect, we got all the information we need')
             print('We will now guide you to the login page')
+            registerUserDAO.registerUser(registerUserDAO, self.name, self.age, self.password, self.gender, self.genderPreference, self.nationality)
             loginDAO.login(loginDAO)
-            time.sleep(1)
-        elif nationality == "e":
+            time.sleep(0.5)
+        elif self.nationality == "e":
             print("Going back to main-menu")
-            time.sleep(1)
+            time.sleep(0.5)
         else:
             print('invalid input')
-            time.sleep(1)
+            time.sleep(0.5)
             self.inputNationality(self)

@@ -1,5 +1,6 @@
 from asyncio.windows_events import NULL
 import time
+from updateDataDAO import updateDataDAO
 
 class dataDAO():
 
@@ -42,6 +43,7 @@ class dataDAO():
             self.dataDecider(self)
         else:
             #TODO: change Name in DB according to userID
+            updateDataDAO.updateData(updateDataDAO, 'name', name,)
             print('')
 
     def changePassword(self):
