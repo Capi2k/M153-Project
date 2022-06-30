@@ -1,10 +1,18 @@
 from asyncio.windows_events import NULL
 import time
 from dataDAO import dataDAO
+from swipeDAO import swipeDAO
 
 class menuDAO():
 
-    def menuOptions(self):
+    name = ''
+    password = ''
+
+    def menuOptions(self, name, password):
+
+        self.name = name
+        self.password = password
+
         time.sleep(1)
         print('\n')
         print('||| Main-menu |||')
@@ -18,5 +26,7 @@ class menuDAO():
         if toDo == "l":
             import startDAO
             startDAO
+        elif toDo == "s":
+            swipeDAO.swipeProcess(swipeDAO, self.name, self.password)
         elif toDo == "c":
-            dataDAO.dataDecider(dataDAO)
+            dataDAO.dataDecider(dataDAO, self.name, self.password)

@@ -16,7 +16,7 @@ class registerUserDAO:
         
         sql = """
             INSERT INTO users (name, age, password, genderId, preferenceId, nationalityId)
-            VALUES ('{}', {}, {}, {}, {}, {})""".format(name, age, password, sqlGender, sqlGenderPreference, sqlNationality)
+            VALUES ('{}', {}, '{}', {}, {}, {})""".format(name, age, password, sqlGender, sqlGenderPreference, sqlNationality)
 
         conn = None
         try:
@@ -83,6 +83,7 @@ class registerUserDAO:
         conn = psycopg2.connect(**params)
         cur = conn.cursor()
         cur.execute(sqlNationality)
+
         sqlOutput = cur.fetchall()
 
         for row in sqlOutput:

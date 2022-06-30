@@ -4,7 +4,14 @@ from updateDataDAO import updateDataDAO
 
 class dataDAO():
 
-    def dataDecider(self):
+    name = ''
+    password = ''
+
+    def dataDecider(self, name, password):
+        
+        self.name = name
+        self.password = password
+
         time.sleep(1)
         print('\n')
         print('||| Which of your data do you want to change? |||')
@@ -43,7 +50,7 @@ class dataDAO():
             self.dataDecider(self)
         else:
             #TODO: change Name in DB according to userID
-            updateDataDAO.updateData(updateDataDAO, 'name', name,)
+            updateDataDAO.updateData(updateDataDAO, 'name', name, 'name', self.name, 'password', self.password)
             print('')
 
     def changePassword(self):
@@ -54,6 +61,7 @@ class dataDAO():
             self.dataDecider(self)
         else:
             #TODO: change Password in DB
+            updateDataDAO.updateData(updateDataDAO, 'password', password, 'name', self.name, 'password', self.password)
             print('')
 
     def changeAge(self):
@@ -63,6 +71,7 @@ class dataDAO():
         if age == "e":
             self.dataDecider(self)
         else:
+            updateDataDAO.updateData(updateDataDAO, 'age', age, 'name', self.name, 'password', self.password)
             #TODO: change Age in DB
             print('')
 
@@ -73,15 +82,28 @@ class dataDAO():
         if gender == "e":
             self.dataDecider(self)
         else:
+            updateDataDAO.updateData(updateDataDAO, 'gender', gender, 'name', self.name, 'password', self.password)
             #TODO: change Gender in DB
             print('')
 
     def changeGenderPreference(self):
         time.sleep(1)
         print('Enter your new gender preference (F,M or E) (e to exit)')
-        genderPreference = input()
-        if genderPreference == "e":
+        preference = input()
+        if preference == "e":
             self.dataDecider(self)
         else:
+            updateDataDAO.updateData(updateDataDAO, 'preference', preference, 'name', self.name, 'password', self.password)
+            #TODO: change Gender Preference in DB
+            print('')
+
+    def changeNationality(self):
+        time.sleep(1)
+        print('Enter your new nationality (Country like CH, DE, AU, FR etc) (e to exit)')
+        nationality = input()
+        if nationality == "e":
+            self.dataDecider(self)
+        else:
+            updateDataDAO.updateData(updateDataDAO, 'nationality', nationality, 'name', self.name, 'password', self.password)
             #TODO: change Gender Preference in DB
             print('')

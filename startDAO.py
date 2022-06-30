@@ -1,10 +1,11 @@
 from asyncio.windows_events import NULL
 from registerDAO import registerDAO
+from loginDAO import loginDAO
 
 class startDAO():
 
     def navigateToLogin(self):
-        print('login')
+        loginDAO.login(loginDAO)
 
     def navigateToRegister(self):
         registerDAO.inputName(registerDAO)
