@@ -16,7 +16,7 @@ class registerUserDAO:
         
         sql = """
             INSERT INTO users (name, age, password, genderId, preferenceId, nationalityId)
-            VALUES ('{}', {}, '{}', {}, {}, {})""".format(name, age, password, sqlGender, sqlGenderPreference, sqlNationality)
+            VALUES ('{}', '{}', '{}', '{}', '{}', '{}')""".format(name, age, password, sqlGender, sqlGenderPreference, sqlNationality)
 
         conn = None
         try:

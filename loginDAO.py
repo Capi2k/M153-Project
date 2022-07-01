@@ -1,5 +1,6 @@
 from asyncio.windows_events import NULL
 from optparse import Values
+from re import L
 #import psycopg2
 import time
 from config import config
@@ -22,16 +23,24 @@ class loginDAO():
         self.enterName(self)
 
     def enterName(self):
-        print('Enter your name')
+        print('Enter your name (Or e to EXIT)')
         time.sleep(0.5)
         self.username = input()
-        self.enterPassword(self)
+        if self.username == "e":
+            print("Going back to main-menu \n")
+            time.sleep(0.5)
+        else:
+            self.enterPassword(self)
 
     def enterPassword(self):
-        print('Enter your password')
+        print('Enter your password (Or e to EXIT)')
         time.sleep(0.5)
         self.password = input()
-        self.checkForUserOnDb(self)
+        if self.username == "e":
+            print("Going back to main-menu \n")
+            time.sleep(0.5)
+        else:
+            self.checkForUserOnDb(self)
 
     def checkForUserOnDb(self):
         loginUserDAO.loginUser(loginUserDAO, self.username, self.password)
